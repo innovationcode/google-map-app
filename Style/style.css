@@ -24,3 +24,42 @@ body {
     top: 40px;
     left: 80px;
 }
+
+/*******  SEARCH  ********/
+.search-container {
+    position: absolute;
+    z-index: 100;
+    top: 130px;
+    left: 80px;
+    width: 400px;
+    height: 60px;
+    background-color: rgb(88, 78, 84, 0.9);
+    transition: color 0.2s ease;
+    border-radius: 44px;
+    display: flex;
+}
+
+.search-container input {
+    width: 100%;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search i {
+    font-size: 25px;
+    color: white;
+}
