@@ -63,3 +63,15 @@ input:focus {
     font-size: 25px;
     color: white;
 }
+
+/***** store-list-container *******/
+.store-list-container {
+    position: absolute;
+    background: white;
+    width: 400px;
+    z-index: 100;
+    top: 210px;
+    left: 80px;
+    bottom: 20px;
+    border-radius: 30px;
+}
