@@ -79,6 +79,10 @@ input:focus {
     display: flex;
 }
 
+.store-container {
+    border-bottom: 1px solid black;
+}
+
 .stores-list {
     padding-left: 20px;
     padding-right: 20px;
@@ -95,6 +99,11 @@ input:focus {
     color: #B5ADAD;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.store-number-container {
+    display: flex;
+    align-items: center;
 }
 
 .store-number {
