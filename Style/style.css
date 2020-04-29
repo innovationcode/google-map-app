@@ -75,3 +75,43 @@ input:focus {
     bottom: 20px;
     border-radius: 30px;
 }
+.store-container-background {
+    display: flex;
+}
+
+.stores-list {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.store-address {
+    margin-top: 30px;
+    font-size: 21px;
+    color: #514C4C;
+}
+
+.store-phone-number {
+    font-size: 16px;
+    color: #B5ADAD;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.store-number {
+    width: 33px;
+    height: 33px;
+    background-color: rgb(129, 122, 122);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-address span {
+    display: block;
+}
+
+.store-info-container {
+    flex-grow: 1;
+}
