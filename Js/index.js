@@ -231,7 +231,7 @@ function initMap() {
 
     //to display information when clicked on marker you need to define infoWindow
     infoWindow = new google.maps.InfoWindow();
-
+    displayStores();
     showMarkers();
 }
 
@@ -270,5 +270,38 @@ function createMarker(latlng, name, address, index) {
     });
 
     markers.push(marker);
+}
+
+// ************ DISPLAY STORES *************
+function displayStores(){
+    var storeHtml = '';
+    stores.forEach(function(store, index){ 
+        var address = store.addressLines;
+        var phone = store.phoneNumber; 
+
+        storeHtml += ` 
+            <div class = 'store-container'>
+                <div class = 'store-container-background' >
+                    <div class = "store-info-container">
+                        <div class = 'store-address'>
+                            <span> ${address[0]} </span>
+                            <span> ${address[1]} </span>
+                        </div>
+
+                        <div class = 'store-phone-number'>
+                             ${phone}
+                        </div>
+                    </div>
+
+                    <div class = "store-number-container">
+                        <div class = 'store-number'>
+                            ${index + 1}
+                        </div>
+                    </div>    
+                </div>
+            </div>
+         `
+    });
+    document.querySelector('.stores-list').innerHTML = storeHtml; //select element with class "stores-list" and display storeHtml there.
 }
 

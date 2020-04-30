@@ -51,6 +51,11 @@ input:focus {
     outline: none;
 }
 
+input:focus::-webkit-input-placeholder
+{
+    color: azure;
+}
+
 .search {
     flex-grow: 1;
     display: flex;
@@ -74,7 +79,10 @@ input:focus {
     left: 80px;
     bottom: 20px;
     border-radius: 30px;
+    display: flex;
+    overflow: hidden; /* to make scrollbar height matching outer container overflow must be hidden*/
 }
+
 .store-container-background {
     display: flex;
 }
@@ -86,6 +94,19 @@ input:focus {
 .stores-list {
     padding-left: 20px;
     padding-right: 20px;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border: 0.5px solid grey;
+    border-radius: 40px;
+}
+::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 30px;
+    height: 5px;
 }
 
 .store-address {
