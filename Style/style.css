@@ -17,7 +17,7 @@ body {
 .title {
     position: absolute;
     z-index: 100;
-    font-size: 52px;
+    font-size: 60px;
     font-weight: bold;
     transition: color 0.2s ease;
     text-transform: uppercase;

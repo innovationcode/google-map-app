@@ -232,6 +232,7 @@ function initMap() {
     //to display information when clicked on marker you need to define infoWindow
     infoWindow = new google.maps.InfoWindow();
     displayStores();
+    setOnClickListener(); 
     showMarkers();
 }
 
@@ -305,3 +306,15 @@ function displayStores(){
     document.querySelector('.stores-list').innerHTML = storeHtml; //select element with class "stores-list" and display storeHtml there.
 }
 
+/****************** setOnClickListener() *****************/
+//this funtion will pop up marker info when clicked on thar store in store container
+function setOnClickListener() {
+    var storeElements = document.querySelectorAll('.store-container');
+    console.log("setOnClickListener  :  ", storeElements)
+
+    storeElements.forEach(function(element, index) {
+        element.addEventListener('click', function() {
+            new google.maps.event.trigger(markers[index], 'click');
+        })
+    });
+}
