@@ -274,7 +274,13 @@ function createMarker(latlng, name, address, index) {
 }
 
 // ************ DISPLAY STORES *************
-function displayStores(){
+function displayStores(foundStores) {
+    if(foundStores) {
+        stores = foundStores;
+    } else {
+        stores = stores;
+    }
+
     var storeHtml = '';
     stores.forEach(function(store, index){ 
         var address = store.addressLines;
@@ -318,3 +324,18 @@ function setOnClickListener() {
         })
     });
 }
+
+/****************** searchStores() according to search area zipcode *****************/
+function searchStores() {
+    var zipCode = document.getElementById('zip-code-input').value;
+    var foundStores = [];
+    console.log(zipCode) // zipCode entered in search area
+    
+    foundStores = stores.filter(function(store, index) {
+         return zipCode === store.address.postalCode.substring(0, 5);
+    });
+    console.log("FOUND STORES  : ", foundStores);
+    displayStores(foundStores); //will display searched dtores according to zipcode entered in search area
+    setOnClickListener(); // onclick in store-list display area will pop up marker info on map
+}
+
