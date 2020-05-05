@@ -67,6 +67,7 @@ input:focus::-webkit-input-placeholder
 .search i {
     font-size: 25px;
     color: white;
+    cursor: pointer;
 }
 
 /***** store-list-container *******/
@@ -84,7 +85,17 @@ input:focus::-webkit-input-placeholder
 }
 
 .store-container-background {
+    padding-left: 8px;
+    padding-right: 8px;
     display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 18px;
+    transition: all 0.2s ease-in-out;
+}
+
+.store-container-background:hover {
+    background-color: rgb(231, 211, 211);
 }
 
 .store-container {
@@ -145,3 +156,6 @@ input:focus::-webkit-input-placeholder
 .store-info-container {
     flex-grow: 1;
 }
+
+
+

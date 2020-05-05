@@ -231,13 +231,14 @@ function initMap() {
 
     //to display information when clicked on marker you need to define infoWindow
     infoWindow = new google.maps.InfoWindow();
-    displayStores();
-    setOnClickListener(); 
-    showMarkers();
+    searchStores();
+    // displayStores();
+    // setOnClickListener(); 
+    // showMarkers();
 }
 
 /******  showMarkers ********/
-function showMarkers() { //showStoreMarker..
+function showMarkers(stores) { //showStoreMarker..
     //console.log(stores.length)
     var bounds = new google.maps.LatLngBounds(); //bounds spreads the marker
 
@@ -250,15 +251,40 @@ function showMarkers() { //showStoreMarker..
 
         var name = store.name;
         var address = store.addressLines[0];
-        createMarker(latlng, name, address, index);
+        // **************************
+        var openStatusText = store.openStatusText;
+        var phoneNumber = store.phoneNumber;
+        createMarker(latlng, name, address, index+1, openStatusText, phoneNumber);
         bounds.extend(latlng);
     })
     map.fitBounds(bounds); //using fitbound marker won't tight together it will scattered to fit in map
 }
 
 /******  createMarker ********/
-function createMarker(latlng, name, address, index) {
-    var html = '<b>' + name + '<b> <br/>' + address;
+function createMarker(latlng, name, address, index, openStatusText, phoneNumber) {
+    //var html = '<b>' + name + '<b> <br/>' + address; // just to display name and address for marker.
+    var html = `
+              <div class = "store-info-window">
+                  <div class = "store-info-name">
+                      ${name}
+                  </div>
+                  <div class = "store-info-status">
+                      ${openStatusText}
+                  </div>
+                  <div class = "store-info-address">
+                      <div class="circle">
+                          <i class="fas fa-location-arrow"></i>
+                      </div>
+                      ${address}
+                  </div>
+                  <div class="store-info-phone">
+                      <div class="circle">
+                          <i class="fas fa-phone-alt"></i>
+                      </div>
+                      ${phoneNumber}
+                  </div>
+              </div>
+    `
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,
@@ -274,13 +300,7 @@ function createMarker(latlng, name, address, index) {
 }
 
 // ************ DISPLAY STORES *************
-function displayStores(foundStores) {
-    if(foundStores) {
-        stores = foundStores;
-    } else {
-        stores = stores;
-    }
-
+function displayStores(stores) {
     var storeHtml = '';
     stores.forEach(function(store, index){ 
         var address = store.addressLines;
@@ -327,15 +347,36 @@ function setOnClickListener() {
 
 /****************** searchStores() according to search area zipcode *****************/
 function searchStores() {
-    var zipCode = document.getElementById('zip-code-input').value;
     var foundStores = [];
+    var zipCode = document.getElementById('zip-code-input').value;
     console.log(zipCode) // zipCode entered in search area
     
-    foundStores = stores.filter(function(store, index) {
-         return zipCode === store.address.postalCode.substring(0, 5);
-    });
+    if(zipCode) {
+        foundStores = stores.filter(function(store, index) {
+            return zipCode === store.address.postalCode.substring(0, 5);
+        });
+    } else {
+        foundStores = stores;
+    }
     console.log("FOUND STORES  : ", foundStores);
+    
+    clearLocations();
     displayStores(foundStores); //will display searched dtores according to zipcode entered in search area
+    showMarkers(foundStores); // will show markers on map for found satores only
     setOnClickListener(); // onclick in store-list display area will pop up marker info on map
 }
 
+/**************** clearLocations() **********************/
+function clearLocations() {
+    infoWindow.close();
+    for(var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers.length = 0;
+
+    // locationSelect.innerHTML = '';
+    // var option = document.createElement('option');
+    // option.value = 'none';
+    // option.iinerHTML = "See all results";
+    // locationSelect.appendChild(option);
+}
