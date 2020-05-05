@@ -283,13 +283,18 @@ function createMarker(latlng, name, address, index, openStatusText, phoneNumber)
                       </div>
                       ${phoneNumber}
                   </div>
-                  <button>Directions</button>
+                  <button onclick = "https://www.cnn.com/">Directions</button>
               </div>
     `
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,
-        label: `${index+1}`
+        //label: `${index+1}`, 
+        label: {
+            text: `${index}`,
+            color: 'white',
+            fontWeight: 'bold' 
+        } 
     });
     
     google.maps.event.addListener(marker, 'click', function() {

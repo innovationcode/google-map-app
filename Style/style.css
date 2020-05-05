@@ -204,3 +204,8 @@ button {
     font-size: 16px;
     margin-left: 98px;
 }
+
+.labels {
+    color : whitesmoke;
+    font-weight: bold;
+}
