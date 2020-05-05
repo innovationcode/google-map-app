@@ -283,6 +283,7 @@ function createMarker(latlng, name, address, index, openStatusText, phoneNumber)
                       </div>
                       ${phoneNumber}
                   </div>
+                  <button>Directions</button>
               </div>
     `
     var marker = new google.maps.Marker({
